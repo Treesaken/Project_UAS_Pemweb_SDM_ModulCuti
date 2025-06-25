@@ -3,21 +3,20 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\JatahCutiResource\Pages;
-use App\Filament\Resources\JatahCutiResource\RelationManagers;
 use App\Models\JatahCuti;
+use App\Models\Pegawai; // Pastikan model ini di-import
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class JatahCutiResource extends Resource
 {
     protected static ?string $model = JatahCuti::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
+    protected static ?string $navigationGroup = 'Management SDM';
 
     public static function form(Form $form): Form
     {
@@ -25,13 +24,18 @@ class JatahCutiResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('tahun')
                     ->required()
-                    ->numeric(),
+                    ->numeric()
+                    ->length(4)
+                    ->default(now()->year),
                 Forms\Components\TextInput::make('jumlah')
                     ->required()
                     ->numeric(),
-                Forms\Components\TextInput::make('nip')
-                    ->required()
-                    ->maxLength(20),
+
+                Forms\Components\Select::make('nip')
+                    ->label('NIP Pegawai')
+                    ->options(Pegawai::query()->pluck('nip', 'nip'))
+                    ->searchable()
+                    ->required(),
             ]);
     }
 
@@ -39,19 +43,16 @@ class JatahCutiResource extends Resource
     {
         return $table
             ->columns([
+                // PERBAIKAN: Tampilkan kolom 'nip' langsung dari tabel jatah_cutis
+                Tables\Columns\TextColumn::make('nip')
+                    ->label('NIP Pegawai')
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('tahun')
-                    ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('jumlah')
-                    ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('nip')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -83,5 +84,20 @@ class JatahCutiResource extends Resource
             'create' => Pages\CreateJatahCuti::route('/create'),
             'edit' => Pages\EditJatahCuti::route('/{record}/edit'),
         ];
+    }
+
+     public static function getModelLabel(): string
+    {
+        return 'Jatah Cuti'; // label di CRUD
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'Jatah Cuti'; // label di sidebar dan tabel
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return 'Jatah Cuti  '; // label di sidebar
     }
 }

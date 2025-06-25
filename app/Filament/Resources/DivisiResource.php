@@ -18,6 +18,7 @@ class DivisiResource extends Resource
     protected static ?string $model = Divisi::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-building-library';
+    protected static ?string $navigationGroup = 'Management SDM';
 
     public static function form(Form $form): Form
     {

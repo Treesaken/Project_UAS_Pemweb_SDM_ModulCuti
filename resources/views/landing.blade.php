@@ -69,7 +69,7 @@
           <div class="col-lg-8">
             <h2>Welcome To CuTime</h2>
             <p>we will provide holiday information for employees</p>
-            <a href="#about" class="btn-get-started">Get Started</a>
+            <a href="{{ route('filament.admin.auth.login') }}" class="btn-get-started">Get Started</a>
           </div>
         </div>
       </div>

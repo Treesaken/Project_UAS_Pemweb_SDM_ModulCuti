@@ -3,21 +3,21 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PengajuanCutiResource\Pages;
-use App\Filament\Resources\PengajuanCutiResource\RelationManagers;
 use App\Models\PengajuanCuti;
+use App\Models\Pegawai; // Pastikan model Pegawai di-import
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class PengajuanCutiResource extends Resource
 {
     protected static ?string $model = PengajuanCuti::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-pencil-square';
+    protected static ?string $navigationGroup = 'Management SDM';
 
     public static function form(Form $form): Form
     {
@@ -35,10 +35,18 @@ class PengajuanCutiResource extends Resource
                     ->maxLength(45),
                 Forms\Components\TextInput::make('status')
                     ->required()
-                    ->maxLength(1),
-                Forms\Components\TextInput::make('pegawai_nip')
-                    ->required()
-                    ->maxLength(20),
+                    ->maxLength(1)
+                    ->default('P') // Default status 'Pending'
+                    ->hidden(), // Sembunyikan dari form, karena status diatur oleh Admin
+                
+                // --- PERUBAHAN UTAMA DI SINI ---
+                // Mengganti TextInput menjadi Select untuk NIP Pegawai
+                Forms\Components\Select::make('pegawai_nip')
+                    ->label('NIP Pegawai')
+                    // Mengambil semua NIP dari tabel pegawais untuk dijadikan pilihan
+                    ->options(Pegawai::query()->pluck('nip', 'nip'))
+                    ->searchable()
+                    ->required(),
             ]);
     }
 
@@ -46,6 +54,9 @@ class PengajuanCutiResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('pegawai_nip')
+                    ->label('NIP Pegawai')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('tanggal_awal')
                     ->date()
                     ->sortable(),
@@ -55,20 +66,18 @@ class PengajuanCutiResource extends Resource
                 Tables\Columns\TextColumn::make('jumlah')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('ket')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('status')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('pegawai_nip')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'P' => 'warning',
+                        'A' => 'success',
+                        'R' => 'danger',
+                        default => 'gray',
+                    }),
+                Tables\Columns\TextColumn::make('ket')
+                    ->searchable()
+                    ->limit(30) // PERBAIKAN: Gunakan ->limit() untuk membatasi panjang teks di tabel
+                    ->tooltip("Lihat selengkapnya"), // Menampilkan teks penuh saat hove
             ])
             ->filters([
                 //
@@ -97,5 +106,20 @@ class PengajuanCutiResource extends Resource
             'create' => Pages\CreatePengajuanCuti::route('/create'),
             'edit' => Pages\EditPengajuanCuti::route('/{record}/edit'),
         ];
+    }
+
+     public static function getModelLabel(): string
+    {
+        return 'Pengajuan Cuti'; // label di CRUD
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'Pengajuan Cuti'; // label di sidebar dan tabel
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return 'Pengajuan Cuti'; // label di sidebar
     }
 }

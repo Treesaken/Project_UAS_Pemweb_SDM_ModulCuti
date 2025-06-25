@@ -18,6 +18,7 @@ class PegawaiResource extends Resource
     protected static ?string $model = Pegawai::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
+    protected static ?string $navigationGroup = 'Management SDM';
 
     public static function form(Form $form): Form
     {
