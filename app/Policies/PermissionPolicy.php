@@ -1,66 +1,20 @@
 <?php
-
 namespace App\Policies;
-
-use App\Models\SpatiePermissionModelsPermission;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class PermissionPolicy
 {
-    /**
-     * Determine whether the user can view any models.
-     */
-    public function viewAny(User $user): bool
-    {
-        return $user->can('manage_system');
+    public function viewAny(User $user): bool { return $user->can('manage-system'); }
+    public function create(User $user): bool { return $user->can('manage-system'); }
+
+    // PERBAIKAN: Gunakan nama kelas yang lengkap di sini
+    public function update(User $user, \Spatie\Permission\Models\Permission $model): bool 
+    { 
+        return $user->can('manage-system'); 
     }
 
-    /**
-     * Determine whether the user can view the model.
-     */
-    public function view(User $user, SpatiePermissionModelsPermission $spatiePermissionModelsPermission): bool
-    {
-        return false;
-    }
-
-    /**
-     * Determine whether the user can create models.
-     */
-    public function create(User $user): bool
-    {
-        return false;
-    }
-
-    /**
-     * Determine whether the user can update the model.
-     */
-    public function update(User $user, SpatiePermissionModelsPermission $spatiePermissionModelsPermission): bool
-    {
-        return false;
-    }
-
-    /**
-     * Determine whether the user can delete the model.
-     */
-    public function delete(User $user, SpatiePermissionModelsPermission $spatiePermissionModelsPermission): bool
-    {
-        return false;
-    }
-
-    /**
-     * Determine whether the user can restore the model.
-     */
-    public function restore(User $user, SpatiePermissionModelsPermission $spatiePermissionModelsPermission): bool
-    {
-        return false;
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     */
-    public function forceDelete(User $user, SpatiePermissionModelsPermission $spatiePermissionModelsPermission): bool
-    {
-        return false;
+    public function delete(User $user, \Spatie\Permission\Models\Permission $model): bool 
+    { 
+        return $user->can('manage-system'); 
     }
 }

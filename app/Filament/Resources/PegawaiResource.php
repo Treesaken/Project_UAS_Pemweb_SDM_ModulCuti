@@ -12,6 +12,8 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Forms\Components\FileUpload;
 
 class PegawaiResource extends Resource
 {
@@ -45,6 +47,11 @@ class PegawaiResource extends Resource
                 Forms\Components\TextInput::make('divisi_id')
                     ->required()
                     ->numeric(),
+                FileUpload::make('foto')
+                    ->label('Foto Pegawai')
+                    ->image() 
+                    ->directory('foto-pegawai') 
+                    ->imageEditor(), 
             ]);
     }
 
@@ -52,6 +59,10 @@ class PegawaiResource extends Resource
     {
         return $table
             ->columns([
+                ImageColumn::make('foto')
+                    ->label('Foto')
+                    ->disk('public') // Pastikan disk sesuai dengan konfigurasi filesystem
+                    ->circular(), // Menampilkan gambar dalam bentuk lingkaran
                 Tables\Columns\TextColumn::make('nip')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('gender')

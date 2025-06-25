@@ -13,7 +13,8 @@ class Pegawai extends Model
         'tgl_lahir',
         'telpon',
         'alamat',
-        'divisi_id'
+        'divisi_id',
+        'foto',
     ];
 
     protected $primaryKey = 'nip';

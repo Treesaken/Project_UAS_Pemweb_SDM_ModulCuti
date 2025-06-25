@@ -32,6 +32,7 @@
   ======================================================== -->
 </head>
 
+
 <body class="index-page">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
@@ -69,7 +70,7 @@
           <div class="col-lg-8">
             <h2>Welcome To CuTime</h2>
             <p>we will provide holiday information for employees</p>
-            <a href="{{ route('filament.admin.auth.login') }}" class="btn-get-started">Get Started</a>
+            <a href="{{ route('filament.admin.auth.login') }}" class="btn-get-started">Dashboard</a>
           </div>
         </div>
       </div>
@@ -82,7 +83,7 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>About</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <p>Kamu Tidak Perlu Khawatir Tentang Cuti Lagi.CuTime Siap Membantu!</p>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -95,31 +96,29 @@
 
           <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
             <div class="about-content ps-0 ps-lg-3">
-              <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+              <h3>CutiTime</h3>
               <p class="fst-italic">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
+                CutiTime adalah platform yang dirancang untuk membantu karyawan mengelola cuti mereka dengan cara yang efisien dan profesional. Dengan CuTime, karyawan dapat mengajukan cuti, melacak sisa cuti, dan memastikan hak cuti mereka terpenuhi tanpa stres.
               </p>
               <ul>
                 <li>
                   <i class="bi bi-diagram-3"></i>
                   <div>
-                    <h4>Ullamco laboris nisi ut aliquip consequat</h4>
-                    <p>Magni facilis facilis repellendus cum excepturi quaerat praesentium libre trade</p>
+                    <h4>Apaa yang akan kamu dapatkan</h4>
+                    <p>Pelacakan Jatah Cuti Real-Time: Pantau sisa cuti tahunan, cuti sakit, atau cuti khusus dengan dashboard yang jelas dan terperinci.</p>
                   </div>
                 </li>
                 <li>
                   <i class="bi bi-fullscreen-exit"></i>
                   <div>
-                    <h4>Magnam soluta odio exercitationem reprehenderi</h4>
-                    <p>Quo totam dolorum at pariatur aut distinctio dolorum laudantium illo direna pasata redi</p>
+                    <h4>Mulai Kelola Cuti dengan Lebih Mudah Sekarang!</h4>
+                    <p>Coba CutiTime gratis selama 30 hari dan rasakan perubahan dalam pengelolaan cuti di perusahaan Anda. Daftar Sekarang | Hubungi Tim Kami</p>
                   </div>
                 </li>
               </ul>
               <p>
-                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                culpa qui officia deserunt mollit anim id est laborum
+                Lebih dari 500 perusahaan telah menggunakan CutiTime untuk menyederhanakan manajemen cuti mereka.
+                "CutiTime menghemat waktu tim HR kami dan membuat proses cuti jauh lebih transparan!"
               </p>
             </div>
 
@@ -212,97 +211,126 @@
 
 
 
-    <!-- Team Section -->
-    <section id="team" class="team section">
+   <style>
+  .member-sm img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  .member-sm .member-info-content h4 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+  }
+  .member-sm .member-info-content span {
+    font-size: 0.875rem;
+  }
+  .member-sm .social a {
+    font-size: 0.8rem;
+    margin: 0 4px;
+  }
+</style>
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Team</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
+<section id="team" class="team section">
 
-      <div class="container">
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Team</h2>
+  </div>
 
-        <div class="row gy-4">
+  <div class="container">
+    <div class="row justify-content-center gy-3">
 
-          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="member">
-              <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>Walter White</h4>
-                  <span>Chief Executive Officer</span>
-                </div>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter-x"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
+      <!-- Repeat 5 team members -->
+      <div class="col-xl-2 col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="member member-sm text-center">
+          <img src="{{ asset('assets/img/team/bilal.jpg') }}" class="img-fluid" alt="">
+          <div class="member-info">
+            <div class="member-info-content">
+              <h4>Muhammad Bilal</h4>
+              <span>Ketua</span>
             </div>
-          </div><!-- End Team Member -->
-
-          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="member">
-              <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>Sarah Jhonson</h4>
-                  <span>Product Manager</span>
-                </div>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter-x"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
+            <div class="social">
+              <a href="#"><i class="bi bi-twitter-x"></i></a>
+              <a href="#"><i class="bi bi-facebook"></i></a>
+              <a href="https://www.instagram.com/mhmdbilalfath/"><i class="bi bi-instagram"></i></a>
             </div>
-          </div><!-- End Team Member -->
-          
-
-          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="member">
-              <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>William Anderson</h4>
-                  <span>CTO</span>
-                </div>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter-x"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Team Member -->
-
-          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="member">
-              <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>Amanda Jepson</h4>
-                  <span>Accountant</span>
-                </div>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter-x"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Team Member -->
-
+          </div>
         </div>
-
       </div>
 
-    </section><!-- /Team Section -->
+      <div class="col-xl-2 col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="member member-sm text-center">
+          <img src="{{ asset('assets/img/team/sayyid.jpg') }}" class="img-fluid" alt="">
+          <div class="member-info">
+            <div class="member-info-content">
+              <h4>Sayed M Qadri</h4>
+              <span>Anggota</span>
+            </div>
+            <div class="social">
+              <a href="#"><i class="bi bi-twitter-x"></i></a>
+              <a href="#"><i class="bi bi-facebook"></i></a>
+              <a href="https://www.instagram.com/sayyid_albouftaim/"><i class="bi bi-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-2 col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="member member-sm text-center">
+          <img src="{{ asset('assets/img/team/haikal.jpg') }}" class="img-fluid" alt="">
+          <div class="member-info">
+            <div class="member-info-content">
+              <h4>Haikal Pilar</h4>
+              <span>Anggota</span>
+            </div>
+            <div class="social">
+              <a href="#"><i class="bi bi-twitter-x"></i></a>
+              <a href="#"><i class="bi bi-facebook"></i></a>
+              <a href="#"><i class="bi bi-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-2 col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="400">
+        <div class="member member-sm text-center">
+          <img src="{{ asset('assets/img/team/fatur1.jpeg') }}" class="img-fluid" alt="">
+          <div class="member-info">
+            <div class="member-info-content">
+              <h4>Faturrahman</h4>
+              <span>Anggota</span>
+            </div>
+            <div class="social">
+              <a href="#"><i class="bi bi-twitter-x"></i></a>
+              <a href="#"><i class="bi bi-facebook"></i></a>
+              <a href="#"><i class="bi bi-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-2 col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="500">
+        <div class="member member-sm text-center">
+          <img src="{{ asset('assets/img/team/syahril.jpg') }}"" class="img-fluid" alt="">
+          <div class="member-info">
+            <div class="member-info-content">
+              <h4>Syahril Arif</h4>
+              <span>Anggota</span>
+            </div>
+            <div class="social">
+              <a href="#"><i class="bi bi-twitter-x"></i></a>
+              <a href="#"><i class="bi bi-facebook"></i></a>
+              <a href="#"><i class="bi bi-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+
 
 
     <!-- Contact Section -->
